@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart - Ryana Calendars</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    /* =========================
+       TOGGLER FIX
+    ========================== */
+     .navbar-toggler{
+  border:none !important;
+  box-shadow:none !important;
+}
+
+.navbar-toggler-icon{
+  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833,37,41,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+[data-theme="dark"] .navbar-toggler-icon{
+  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+    
+   /* ============================
+   THEME VARIABLES
+============================ */
+:root {
+  --bg: #faf8f5;
+  --bg2: #f2ede6;
+  --text: #1a1610;
+  --muted: #7a6e62;
+  --card: #ffffff;
+  --nav: #faf8f5ee;
+  --border: #e0d8ce;
+  --accent: #b5832a;
+  --accent2: #2a4b3c;
+  --shadow: rgba(26,22,16,0.08);
+}
+[data-theme="dark"] {
+  --bg: #0e0d0b;
+  --bg2: #161410;
+  --text: #f0ebe3;
+  --muted: #9a8e80;
+  --card: #1c1a16;
+  --nav: #0e0d0bee;
+  --border: #2e2a24;
+  --accent: #b5832a;
+  --accent2: #4a8c6a;
+  --shadow: rgba(0,0,0,0.3);
+}
+
+/* ============================
+   GLOBAL
+============================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background .35s, color .35s;
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+section { padding: 90px 0; }
+
+/* ============================
+   NAVBAR
+============================ */
+.navbar-custom {
+      background: var(--nav) !important;
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: .35s;
+      padding: 10px 0;
+    }
+    .navbar-brand-custom {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text) !important;
+      text-decoration: none;
+      letter-spacing: .5px;
+      margin-left: 50px;
+    }
+.navbar-brand-custom span { color: var(--accent); }
+
+.nav-link-c {
+  color: var(--text) !important;
+  font-size: .88rem;
+  font-weight: 500;
+  padding: 8px 14px !important;
+  border-radius: 8px;
+  transition: .25s;
+  letter-spacing: .3px;
+}
+.nav-link-c:hover { background: var(--bg2); }
+
+.dropdown-menu {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 16px 40px var(--shadow);
+}
+.dropdown-item {
+  color: var(--text);
+  border-radius: 8px;
+  font-size: .87rem;
+  padding: 8px 14px;
+  transition: .2s;
+}
+.dropdown-item:hover { background: var(--bg2); color: var(--text); }
+.dropdown-divider { border-color: var(--border); margin: 6px 0; }
+
+.theme-btn {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: .3s;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.theme-btn:hover { border-color: var(--accent); }
+
+.cart-link {
+  position: relative;
+  color: var(--text) !important;
+  font-size: 1.1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: .25s;
+  text-decoration: none;
+}
+.cart-link:hover { background: var(--bg2); }
+
+#navCartCount {
+  font-size: .6rem;
+  min-width: 18px; height: 18px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  position: absolute; top: 2px; right: 2px;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .navbar-toggler { filter: invert(1); }
+
+   /* Cart  */  
+
+    .cart-item-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      transition: box-shadow 0.2s;
+    }
+    .cart-item-card:hover { box-shadow: 0 4px 16px var(--shadow); }
+
+    .item-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      background: var(--bg2);
+    }
+    .item-img-fallback {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      background: var(--bg2);
+      color: var(--accent);
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+    }
+
+    .qty-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      color: var(--text);
+      line-height: 1;
+    }
+    .qty-btn:hover { 
+      border-color: var(--accent); 
+      color: var(--accent); 
+    }
+
+    .summary-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+      padding: 1.5rem;
+      position: sticky;
+      top: 76px;
+    }
+
+    .empty-state {
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .toast-wrap {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+    }
+    
+    /* image */
+
+.img{
+  display: flex;
+  justify-content: left;
+  text-shadow: #dddddd  ;
+}
+
+/* Img dark mode */
+[data-theme="dark"] .img{
+  filter: brightness(0) invert(1);
+}
+  </style>
+</head>
+<body>
+
+<!-- ============================
+     NAVBAR
+============================ -->
+<nav class="navbar navbar-expand-lg navbar-custom shadow-sm sticky-top">
+  <div class="container">
+    <div>
+      <img class="img" src="Ryana_Logo-removebg-preview-removebg-preview.png" alt="logo" style="height:10vh; width:40vh;">
+      <a class="navbar-brand-custom" href="#">Ryana <span>Calendars</span></a>
+    </div>
+
+    <button class="navbar-toggler border-0 shadow-none" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item me-1">
+        
+        </li>
+        <li class="nav-item"><a class="nav-link nav-link-c active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="gallery.html">Image Gallery</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-c dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="index.html#products">All Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="calendar.html">Calendars</a></li>
+            <li><a class="dropdown-item" href="diaries.html">Diaries</a></li>
+            <li><a class="dropdown-item" href="journal.html">Journals</a></li>
+            <li><a class="dropdown-item" href="officeProduct.html">Office Products</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="index.html#downloads">Price List</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="contactusform.html">Contact</a></li>
+        <!-- Cart -->
+        <li class="nav-item">
+          <a class="cart-link" href="cart.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="navCartCount">0</span>
+          </a>
+        </li>
+        <!-- Dark Mode -->
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <button class="theme-btn" onclick="toggleTheme()">
+            <span class="t-icon">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="bg-dark text-white py-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0" style="font-size:0.85rem;">
+        <li class="breadcrumb-item"><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li>
+        <li class="breadcrumb-item text-white active">Cart</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container py-4">
+  <div class="row g-4">
+
+    <!-- LEFT: Cart Items -->
+    <div class="col-lg-8">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold mb-0">
+          Items <span class="text-muted fw-normal fs-6" id="itemCountLabel"></span>
+        </h5>
+        <button class="btn btn-sm btn-outline-danger" onclick="clearCart()">
+          <i class="fa-solid fa-trash-can me-1"></i>Clear Cart
+        </button>
+      </div>
+      <div id="cartContent"></div>
+    </div>
+
+    <!-- RIGHT: Order Summary -->
+    <div class="col-lg-4">
+      <div class="summary-card">
+        <h5 class="fw-bold mb-3 pb-2 border-bottom">Order Summary</h5>
+
+        <div class="d-flex justify-content-between text-muted mb-2">
+          <span>Subtotal</span><span id="subtotal">Rs 0</span>
+        </div>
+        <div class="d-flex justify-content-between text-muted mb-2">
+          <span>Delivery</span><span id="delivery">Rs 150</span>
+        </div>
+        <div class="d-flex justify-content-between text-success mb-2">
+          <span>Discount</span><span id="discount">— Rs 0</span>
+        </div>
+        <hr/>
+        <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+          <span>Total</span><span id="grandTotal">Rs 0</span>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control form-control-sm" placeholder="Promo code..." id="promoInput"/>
+          <button class="btn btn-outline-secondary btn-sm" onclick="applyPromo()">Apply</button>
+        </div>
+
+        <button class="btn btn-primary w-100 py-2 fw-semibold" id="checkoutBtn" onclick="checkout()">
+          <i class="fa-solid fa-lock me-2"></i>Proceed to Checkout
+        </button>
+        <p class="text-center text-muted mt-2 mb-0" style="font-size:0.75rem;">
+          <i class="fa-solid fa-shield-halved me-1"></i>Secure & encrypted checkout
+        </p>
+        <hr/>
+        <a id="continueShoppingBtn" href="index.html" class="btn btn-outline-dark w-100 btn-sm">
+          <i class="fa-solid fa-arrow-left me-2"></i>Continue Shopping
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+  <div class="container">
+    <div class="mb-3">
+     <a href="https://www.facebook.com" target="_blank" class= "text-white me-3"><i class="fa-brands fa-facebook fa-lg"></i></a>
+      <a href="https://www.instagram.com" target="_blank" class= "text-white me-3"><i class="fa-brands fa-instagram fa-lg"></i></a>
+      <a href="https://www.linkedin.com" target="_blank" class= "text-white me-3"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+    </div>
+    <p class="mb-0">&copy; 2026 Ryana Calendars. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast-wrap">
+  <div id="liveToast" class="toast align-items-center text-white bg-dark border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg"></div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  /* ================================
+     CONFIG
+  ================================ */
+  const DELIVERY = 150;
+  const PROMOS = {
+    SAVE10: 10,
+    SHOP20: 20,
+    WELCOME: 15
+  };
+  
+  let discountAmount = 0;
+  
+  /* ================================
+     STORAGE FUNCTIONS
+  ================================ */
+  function getCart() {
+    return JSON.parse(localStorage.getItem('ryana_cart') || '[]');
+  }
+  
+  function saveCart(cart) {
+    localStorage.setItem('ryana_cart', JSON.stringify(cart));
+    updateNavCount();
+  }
+  
+  /* ================================
+     NAV COUNT
+  ================================ */
+  function updateNavCount() {
+    const total = getCart().reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById('navCartCount').textContent = total;
+  }
+  
+  /* ================================
+     TOAST
+  ================================ */
+  function showToast(msg) {
+    document.getElementById('toastMsg').textContent = msg;
+    new bootstrap.Toast(document.getElementById('liveToast'), {
+      delay: 2500
+    }).show();
+  }
+  
+  /* ================================
+     CART ACTIONS
+  ================================ */
+  function changeQty(name, delta) {
+    let cart = getCart();
+    const item = cart.find(i => i.name === name);
+  
+    if (!item) return;
+  
+    item.qty += delta;
+  
+    if (item.qty <= 0) {
+      cart = cart.filter(i => i.name !== name);
+      showToast('Item removed from cart');
+    }
+  
+    saveCart(cart);
+    render();
+  }
+  
+  function removeItem(name) {
+    const cart = getCart().filter(i => i.name !== name);
+    saveCart(cart);
+    showToast('Item removed!');
+    render();
+  }
+  
+  function clearCart() {
+    if (!confirm('Cart saaf karein?')) return;
+  
+    localStorage.removeItem('ryana_cart');
+    discountAmount = 0;
+  
+    render();
+    showToast('Cart cleared!');
+  }
+  
+  /* ================================
+     PROMO
+  ================================ */
+  function applyPromo() {
+    const code = document.getElementById('promoInput')
+      .value.trim().toUpperCase();
+  
+    if (PROMOS[code]) {
+      const sub = getCart().reduce((s, i) => s + i.price * i.qty, 0);
+      discountAmount = Math.round(sub * PROMOS[code] / 100);
+  
+      showToast('✅ ' + PROMOS[code] + '% discount applied');
+      updateSummary();
+    } else {
+      showToast('❌ Invalid promo code');
+    }
+  }
+  
+  /* ================================
+     CHECKOUT
+  ================================ */
+  function checkout() {
+    showToast('🎉 Order placed successfully!');
+  
+    setTimeout(() => {
+      localStorage.removeItem('ryana_cart');
+      discountAmount = 0;
+      render();
+    }, 1500);
+  }
+  
+  /* ================================
+     SUMMARY
+  ================================ */
+  function updateSummary() {
+    const cart = getCart();
+  
+    const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    const hasItems = cart.length > 0;
+  
+    const total = hasItems
+      ? Math.max(0, subtotal + DELIVERY - discountAmount)
+      : 0;
+  
+    document.getElementById('subtotal').textContent =
+      'Rs ' + subtotal.toLocaleString();
+  
+    document.getElementById('delivery').textContent =
+      hasItems ? 'Rs ' + DELIVERY : 'Rs 0';
+  
+    document.getElementById('discount').textContent =
+      discountAmount ? '— Rs ' + discountAmount.toLocaleString() : '— Rs 0';
+  
+    document.getElementById('grandTotal').textContent =
+      'Rs ' + total.toLocaleString();
+  
+    document.getElementById('checkoutBtn').disabled = !hasItems;
+  }
+  
+  /* ================================
+     RENDER CART
+  ================================ */
+  function render() {
+    const cart = getCart();
+    const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+  
+    document.getElementById('itemCountLabel').textContent =
+      totalItems
+        ? `(${totalItems} item${totalItems > 1 ? 's' : ''})`
+        : '';
+  
+    const container = document.getElementById('cartContent');
+  
+    /* EMPTY STATE */
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <i class="fa-solid fa-cart-shopping fa-4x text-muted mb-3"></i>
+          <h4 class="fw-bold mt-2">Cart Empty Hai!</h4>
+          <p class="text-muted">Koi bhi product add nahi kiya abhi tak.</p>
+          <a href="index.html#products" class="btn btn-primary px-4 mt-2">
+            <i class="fa-solid fa-store me-2"></i>Shop Now
+          </a>
+        </div>
+      `;
+      updateSummary();
+      return;
+    }
+  
+    /* ITEMS */
+    container.innerHTML = cart.map(item => {
+  
+      /* IMAGE LOGIC */
+      const imageHTML = item.image
+        ? `<img src="${item.image}" class="item-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
+        : '';
+  
+      const fallbackHTML = `
+        <div class="item-img-fallback"
+             style="display:${item.image ? 'none' : 'flex'}">
+          ${item.name ? item.name[0].toUpperCase() : '?'}
+        </div>
+      `;
+  
+      return `
+      <div class="cart-item-card">
+        <div class="d-flex align-items-center gap-3">
+  
+          <div>
+            ${imageHTML}
+            ${fallbackHTML}
+          </div>
+  
+          <div class="flex-grow-1">
+            <span class="badge bg-primary bg-opacity-10 text-primary" style="font-size:0.7rem;">
+              ${item.category || ''}
+            </span>
+            <div class="fw-semibold">${item.name}</div>
+            <div class="text-muted" style="font-size:0.82rem;">
+              Rs ${item.price.toLocaleString()} each
+            </div>
+          </div>
+  
+          <div class="d-flex align-items-center gap-2">
+            <button class="qty-btn"
+              onclick="changeQty('${item.name.replace(/'/g,"\\'")}', -1)">−</button>
+  
+            <span class="fw-semibold" style="min-width:20px;text-align:center;">
+              ${item.qty}
+            </span>
+  
+            <button class="qty-btn"
+              onclick="changeQty('${item.name.replace(/'/g,"\\'")}', +1)">+</button>
+          </div>
+  
+          <div class="fw-bold text-end" style="min-width:80px;">
+            Rs ${(item.price * item.qty).toLocaleString()}
+          </div>
+  
+          <button class="btn btn-sm btn-outline-danger"
+            onclick="removeItem('${item.name.replace(/'/g,"\\'")}')">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+  
+        </div>
+      </div>
+      `;
+    }).join('');
+  
+    updateSummary();
+  }
+  
+  /* ================================
+     INIT
+  ================================ */
+  render();
+  updateNavCount();
+
+
+  /* LOAD SAVED THEME */
+window.addEventListener('DOMContentLoaded',()=>{
+
+  const savedTheme = localStorage.getItem('theme');
+
+  if(savedTheme){
+
+    document.documentElement
+      .setAttribute('data-theme',savedTheme);
+
+    const icons =
+      document.querySelectorAll('.t-icon');
+
+    icons.forEach(icon=>{
+
+      if(savedTheme === 'dark'){
+        icon.textContent='☀️';
+      }
+      else{
+        icon.textContent='🌙';
+      }
+
+    });
+
+  }
+
+});
+
+
+/* ============================
+   DARK MODE
+============================ */
+function toggleTheme() {
+  const html = document.documentElement;
+  const icons = document.querySelectorAll('.t-icon');
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  icons.forEach(i => i.textContent = isDark ? '🌙' : '☀️');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+}
+
+window.addEventListener('DOMCSontentLoaded', () => {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.querySelectorAll('.t-icon').forEach(i => {
+      i.textContent = saved === 'dark' ? '☀️' : '🌙';
+    });
+  }
+  updateNavCount();
+});
+  
+  /* Continue Shopping — wapis usi page par jahan se add to cart kia */
+  const lastPage = localStorage.getItem('ryana_lastPage');
+  if (lastPage) {
+    const btn = document.getElementById('continueShoppingBtn');
+    if (btn) btn.href = lastPage;
+  }
+</script>
+  </body>
+</html>

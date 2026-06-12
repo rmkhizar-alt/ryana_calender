@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryana Calendars — Premium Stationery</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =============================
+   COLOR THEME VARIABLES
+============================= */
+:root {
+  --bg: #faf8f5;
+  --bg2: #f2ede6;
+  --text: #1a1610;
+  --muted: #7a6e62;
+  --card: #ffffff;
+  --nav: #faf8f5ee;
+  --border: #e0d8ce;
+  --accent: #b5832a;
+  --accent2: #2a4b3c;
+  --shadow: rgba(26,22,16,0.08);
+}
+[data-theme="dark"] {
+  --bg: #0e0d0b;
+  --bg2: #161410;
+  --text: #f0ebe3;
+  --muted: #9a8e80;
+  --card: #1c1a16;
+  --nav: #0e0d0bee;
+  --border: #2e2a24;
+  --accent: #d4a043;
+  --accent2: #4a8c6a;
+  --shadow: rgba(0,0,0,0.3);
+}
+
+/* =============================
+   GLOBAL
+============================= */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background .35s, color .35s;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4,h5 { font-family: 'Cormorant Garamond', serif; }
+section { padding: 90px 0; }
+
+/* =============================
+   NAVBAR
+============================= */
+.navbar-custom {
+  background: var(--nav) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: .35s;
+  padding: 10px 0;
+}
+.navbar-brand-custom {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text) !important;
+  text-decoration: none;
+  letter-spacing: .5px;
+  margin-left: 50px;
+}
+.navbar-brand-custom span { color: var(--accent); }
+
+.nav-link-c {
+  color: var(--text) !important;
+  font-size: .88rem;
+  font-weight: 500;
+  padding: 8px 14px !important;
+  border-radius: 8px;
+  transition: .25s;
+  letter-spacing: .3px;
+}
+.nav-link-c:hover { background: var(--bg2); }
+
+.dropdown-menu {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 16px 40px var(--shadow);
+}
+.dropdown-item {
+  color: var(--text);
+  border-radius: 8px;
+  font-size: .87rem;
+  padding: 8px 14px;
+  transition: .2s;
+}
+.dropdown-item:hover { background: var(--bg2); color: var(--text); }
+.dropdown-divider { border-color: var(--border); margin: 6px 0; }
+
+.theme-btn {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: .3s;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.theme-btn:hover { border-color: var(--accent); }
+
+.cart-link {
+  position: relative;
+  color: var(--text) !important;
+  font-size: 1.1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: .25s;
+  text-decoration: none;
+}
+.cart-link:hover { background: var(--bg2); }
+
+#navCartCount {
+  font-size: .6rem;
+  min-width: 18px; height: 18px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  position: absolute; top: 2px; right: 2px;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .navbar-toggler { filter: invert(1); }
+
+/* =============================
+   HERO
+============================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(rgba(0,0,0,.52), rgba(0,0,0,.52)),
+              url('hero.png') no-repeat center center / cover;
+}
+.hero-content { position: relative; z-index: 2; }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  color: #fff;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.5px;
+}
+.hero h1 em { color: #d4a043; font-style: italic; }
+.hero p { color: #e0d8ce; font-size: 1.05rem; max-width: 480px; }
+
+.btn-gold {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 13px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: .9rem;
+  text-decoration: none;
+  transition: .3s;
+  letter-spacing: .3px;
+}
+.btn-gold:hover { background: #9a6e22; color: #fff; transform: translateY(-2px); }
+
+.btn-outline-hero {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.5);
+  padding: 13px 30px;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: .9rem;
+  text-decoration: none;
+  transition: .3s;
+}
+.btn-outline-hero:hover { border-color: #fff; background: rgba(255,255,255,.08); color: #fff; }
+
+/* =============================
+   SECTION HEADERS
+============================= */
+.sec-label {
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: block;
+}
+.sec-head {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.sec-sub { color: var(--muted); font-size: .95rem; }
+
+/* =============================
+   PRODUCT SLIDER
+============================= */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 5px;
+}
+.slider-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+.slider-item {
+  flex: 0 0 calc(33.333% - 16px);
+  min-width: calc(33.333% - 16px);
+}
+@media (max-width: 991px) {
+  .slider-item { flex: 0 0 calc(50% - 12px); min-width: calc(50% - 12px); }
+}
+@media (max-width: 576px) {
+  .slider-item { flex: 0 0 100%; min-width: 100%; }
+}
+.slider-arrow {
+  width: 45px; height: 45px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+.slider-arrow:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.slider-arrow.disabled { opacity: 0.4; cursor: not-allowed; background: var(--bg2); }
+
+/* =============================
+   ABOUT STRIP
+============================= */
+.about-strip {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 0;
+}
+.about-strip p { color: var(--muted); font-size: 1.05rem; line-height: 1.9; max-width: 680px; }
+
+/* =============================
+   PRODUCT CARDS
+============================= */
+.filter-btn {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: .85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .25s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px var(--shadow);
+}
+.product-card img {
+  width: 100%; height: 210px;
+  object-fit: cover;
+}
+.category-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 1;
+  font-size: .7rem; padding: 4px 10px; border-radius: 50px;
+  font-weight: 600; letter-spacing: .5px;
+}
+.card-body-c {
+  padding: 1.1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-body-c h5 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.card-body-c p { font-size: .83rem; color: var(--muted); flex-grow: 1; margin-bottom: 0; }
+
+.card-footer-c {
+  padding: .85rem 1.1rem 1.1rem;
+  border-top: 1px solid var(--border);
+}
+.price-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.btn-desc {
+  flex: 1; font-size: .8rem; padding: 8px;
+  border-radius: 10px;
+  border: 1.5px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  transition: .25s;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.btn-desc:hover { background: var(--accent); color: #fff; }
+
+.btn-feat {
+  flex: 1; font-size: .8rem; padding: 8px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: .25s;
+  text-decoration: none;
+  text-align: center;
+}
+.btn-feat:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn-moreprod {
+  flex: 1; font-size: .8rem; padding: 8px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent2);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s;
+  text-decoration: none;
+  text-align: center;
+}
+.btn-moreprod:hover { opacity: .85; color: #fff; }
+
+/* Add to Cart button */
+.btn-addcart {
+  flex: 1; font-size: .8rem; padding: 8px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s;
+  text-align: center;
+  white-space: nowrap;
+}
+.btn-addcart:hover { opacity: .85; }
+.btn-addcart.added { background: #2d7a50 !important; }
+
+/* =============================
+   DESCRIPTION MODAL
+============================= */
+.desc-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.desc-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.desc-modal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  max-width: 520px;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.25);
+  transform: translateY(20px) scale(0.97);
+  transition: transform .3s;
+}
+.desc-overlay.active .desc-modal {
+  transform: translateY(0) scale(1);
+}
+.desc-modal-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.desc-modal-body {
+  padding: 28px 30px 32px;
+}
+.desc-modal-badge {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  display: block;
+}
+.desc-modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.desc-modal-text {
+  font-size: .93rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 24px;
+}
+.desc-modal-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.desc-modal-features li {
+  font-size: .82rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.desc-modal-features li::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.desc-modal-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  transition: .2s;
+  z-index: 2;
+}
+.desc-modal-close:hover { background: rgba(0,0,0,.6); }
+.desc-modal-img-wrap { position: relative; }
+
+/* =============================
+   DOWNLOADS
+============================= */
+.downloads-sec {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.dl-btn {
+  border-radius: 16px;
+  padding: 28px 10px;
+  font-weight: 700;
+  font-size: .95rem;
+  width: 100%;
+  border: none !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #ffffff !important;
+  transition: .3s;
+}
+.dl-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 28px var(--shadow); color: #fff !important; }
+.dl-btn-pdf  { background: #dc3545 !important; }
+.dl-btn-xlsx { background: #198754 !important; }
+.dl-btn-docx { background: #0d6efd !important; }
+
+/* =============================
+   REVIEWS
+============================= */
+.rev-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 30px;
+  height: 100%;
+  transition: .3s;
+}
+.rev-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow); }
+.stars { color: #d4a043; font-size: 1rem; letter-spacing: 2px; }
+.rev-text { font-size: .95rem; color: var(--muted); font-style: italic; line-height: 1.8; }
+.rev-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1rem; }
+
+/* =============================
+   CONTACT
+============================= */
+.contact-sec { background: var(--bg); }
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+}
+.form-control-c {
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: .9rem;
+  transition: .25s;
+  width: 100%;
+}
+.form-control-c:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--card);
+  box-shadow: 0 0 0 3px rgba(181,131,42,.12);
+}
+.form-control-c::placeholder { color: var(--muted); }
+.form-label-c { font-size: .82rem; font-weight: 600; margin-bottom: 6px; display: block; letter-spacing: .3px; }
+.contact-info-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  margin-bottom: 20px;
+}
+.contact-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); font-size: .9rem;
+  flex-shrink: 0;
+}
+.map-box {
+  width: 100%; overflow: hidden;
+  border-radius: 20px; border: 1px solid var(--border);
+  box-shadow: 0 8px 30px var(--shadow);
+}
+.map-box iframe { display: block; width: 100%; }
+
+/* =============================
+   FOOTER
+============================= */
+.footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 80px 0 30px;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.footer-logo span { color: var(--accent); }
+.footer-text { color: var(--muted); line-height: 1.8; font-size: .9rem; }
+.footer-title { font-weight: 600; font-size: .9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; }
+.footer-links { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 11px; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: .88rem; transition: .25s; }
+.footer-links a:hover { color: var(--accent); }
+.social-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--text);
+  text-decoration: none;
+  transition: .3s;
+  font-size: .9rem;
+}
+.social-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-3px); }
+.newsletter-form {
+  display: flex;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  overflow: hidden;
+}
+.newsletter-input {
+  flex: 1; background: none; border: none;
+  padding: 12px 18px; color: var(--text);
+  font-size: .88rem; outline: none;
+}
+.newsletter-input::placeholder { color: var(--muted); }
+.newsletter-submit {
+  background: var(--accent); color: #fff;
+  border: none; padding: 12px 22px;
+  font-weight: 600; font-size: .85rem;
+  cursor: pointer; transition: .25s;
+}
+.newsletter-submit:hover { opacity: .85; }
+.footer-bottom { color: var(--muted); font-size: .88rem; }
+.footer-hr { border-color: var(--border); margin: 50px 0 28px; }
+
+/* =============================
+   TOAST
+============================= */
+.toast-c {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+  background: var(--text); color: var(--bg);
+  padding: 13px 24px; border-radius: 50px;
+  font-size: .88rem; font-weight: 500;
+  z-index: 9999;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s;
+  white-space: nowrap;
+  box-shadow: 0 8px 30px var(--shadow);
+}
+.toast-c.show { opacity: 1; }
+
+/* =============================
+   ANIMATIONS
+============================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content > * { animation: fadeUp .8s ease both; }
+.hero-content > *:nth-child(1) { animation-delay: .1s; }
+.hero-content > *:nth-child(2) { animation-delay: .25s; }
+.hero-content > *:nth-child(3) { animation-delay: .4s; }
+
+/* Logo image */
+.img {
+  display: flex;
+  justify-content: left;
+}
+[data-theme="dark"] .img {
+  filter: brightness(0) invert(1);
+}
+</style>
+</head>
+<body>
+
+<!-- =============================
+     NAVBAR
+============================= -->
+<nav class="navbar navbar-expand-lg navbar-custom shadow-sm sticky-top">
+  <div class="container">
+    <div>
+      <img class="img" src="Ryana_Logo-removebg-preview-removebg-preview.png" alt="logo" style="height:10vh; width:40vh;">
+      <a class="navbar-brand-custom" href="#">Ryana <span>Calendars</span></a>
+    </div>
+
+    <button class="navbar-toggler border-0 shadow-none" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item me-1">
+          <button class="theme-btn" onclick="toggleSearch()" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </li>
+        <li class="nav-item"><a class="nav-link nav-link-c active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="gallery.html">Image Gallery</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-c dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#products">All Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="calendar.html">Calendars</a></li>
+            <li><a class="dropdown-item" href="diaries.html">Diaries</a></li>
+            <li><a class="dropdown-item" href="journal.html">Journals</a></li>
+            <li><a class="dropdown-item" href="officeProduct.html">Office Products</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="#downloads">Price List</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="contactusform.html">Contact</a></li>
+        <!-- Cart -->
+        <li class="nav-item">
+          <a class="cart-link" href="cart.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="navCartCount">0</span>
+          </a>
+        </li>
+        <!-- Dark Mode -->
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <button class="theme-btn" onclick="toggleTheme()">
+            <span class="t-icon">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Search Overlay -->
+<div id="searchOverlay" style="
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.6); z-index:9998;
+  display:none; opacity:0; transition:opacity .3s;
+  align-items:flex-start; justify-content:center; padding-top:80px;
+" onclick="closeSearch(event)">
+  <div style="
+    background:var(--card); border:1px solid var(--border);
+    border-radius:20px; width:90%; max-width:600px; padding:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  " onclick="event.stopPropagation()">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+      <i class="fa-solid fa-magnifying-glass" style="color:var(--accent); font-size:1.1rem;"></i>
+      <input type="text" id="searchInput" class="form-control-c"
+        placeholder="Search calendars, diaries, journals..."
+        oninput="handleSearch(this.value)"
+        onkeydown="handleSearchKey(event)"
+        style="flex:1; border:none; background:transparent; font-size:1rem; padding:4px 0;"
+        autocomplete="off">
+      <button onclick="closeSearchAll()" style="
+        background:none; border:none; color:var(--muted);
+        font-size:1.2rem; cursor:pointer; padding:4px 8px;
+      "><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="searchResults" style="border-top:1px solid var(--border); padding-top:12px; display:none;"></div>
+    <div id="searchEmpty" style="display:none; text-align:center; padding:20px; color:var(--muted); font-size:.9rem;">
+      <i class="fa-solid fa-search" style="font-size:1.5rem; margin-bottom:8px; display:block; opacity:.4;"></i>
+      No products found. Please try again.
+    </div>
+    <div id="searchHint" style="text-align:center; padding:10px 0; color:var(--muted); font-size:.82rem;">
+      Try: "wall calendar", "diary", "leather journal"...
+    </div>
+  </div>
+</div>
+
+<!-- =============================
+     HERO
+============================= -->
+<section class="hero">
+  <div class="hero-content container">
+    <div class="col-lg-6">
+      <span class="sec-label" style="color:#d4a043;">Premium Stationery</span>
+      <h1>Beautiful tools<br>for a <em>beautiful life</em>.</h1>
+      <p class="my-4">Elevate your daily rituals with our handcrafted calendars, diaries, journals and premium office products.</p>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="#products" class="btn-gold">Shop the Collection</a>
+        <a href="#about" class="btn-outline-hero">Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================
+     FEATURED SLIDER
+============================= -->
+<section id="featured-slider" style="background:var(--bg); padding:80px 0 40px 0;">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+      <div>
+        <span class="sec-label">Our Signature Range</span>
+        <h2 class="sec-head mb-0">Featured Masterpieces</h2>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="slider-arrow" id="slider-prev" onclick="moveSlider(-1)" aria-label="Previous">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="slider-arrow" id="slider-next" onclick="moveSlider(1)" aria-label="Next">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="slider-container">
+      <div class="slider-track" id="sliderTrack">
+
+        <!-- Wall Calendar -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-primary category-badge">Calendar</span>
+            <img src="wall calender.png" alt="Wall Calendar">
+            <div class="card-body-c">
+              <h5>Wall Calendar</h5>
+              <p>High-quality 12-month corporate wall calendar with glossy finish pages.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-wall-calendars.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="wallCalendersAll.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="wallCalendersAll.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desk Calendar -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-primary category-badge">Calendar</span>
+            <img src="Modern Desk Calendar Mockup Design Free Download - muhammad ahsan.jfif" alt="Desk Calendar">
+            <div class="card-body-c">
+              <h5>Desk Calendar</h5>
+              <p>Compact triangular stand desk calendar, perfect for office tables.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-desk-calendar.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="DeskAllCalenders.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="DeskAllCalenders.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pocket Calendar -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-primary category-badge">Calendar</span>
+            <img src="pocket calender.jfif" alt="Pocket Calendar">
+            <div class="card-body-c">
+              <h5>Pocket Calendar</h5>
+              <p>Slim pocket-sized calendar to carry dates and schedules everywhere.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-pocket-calendar.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="AllPocketCalendar.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="AllPocketCalendar.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Diary -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-success category-badge">Diary</span>
+            <img src="executivediary.png" alt="Executive Diary">
+            <div class="card-body-c">
+              <h5>Executive Diary</h5>
+              <p>Premium leatherette casing with page-a-day layout and ribbon bookmark.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-executive-diary.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="ExecutiveAllDiary.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="ExecutiveAllDiary.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Diary -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-success category-badge">Diary</span>
+            <img src="student diarie.jfif" alt="Student Diary">
+            <div class="card-body-c">
+              <h5>Student Diary</h5>
+              <p>Lightweight, colorful designs with planner grids for homework tracking.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-student-diary.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="StudentAllDiary.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="StudentAllDiary.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Diary -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-success category-badge">Diary</span>
+            <img src="business diary.jpg" alt="Business Diary">
+            <div class="card-body-c">
+              <h5>Business Diary</h5>
+              <p>A professional diary for planning meetings, schedules, and daily tasks.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-business-diary.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="AllBusinessDiary.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="AllBusinessDiary.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leather Journal -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-warning text-dark category-badge">Journal</span>
+            <img src="leather journal.jfif" alt="Leather Journal">
+            <div class="card-body-c">
+              <h5>Leather Journal</h5>
+              <p>Handcrafted genuine leather notebook with rustic vintage unlined pages.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-leather-journal.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="AllLeatherJournal.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="AllLeatherJournal.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Travel Journal -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-warning text-dark category-badge">Journal</span>
+            <img src="travel jornal.jfif" alt="Travel Journal">
+            <div class="card-body-c">
+              <h5>Travel Journal</h5>
+              <p>Pocket-sized hardbound journal with expandable pocket for tickets.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-travel-journal.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="AllTravelJournal.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="AllTravelJournal.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Journal -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-warning text-dark category-badge">Journal</span>
+            <img src="Personal Journal.jpg" alt="Personal Journal">
+            <div class="card-body-c">
+              <h5>Personal Journal</h5>
+              <p>Capture thoughts, memories, goals, and daily experiences beautifully.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-personal-journal.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="AllPersonalJournal.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="AllPersonalJournal.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leather Desk Organizer -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-warning text-dark category-badge">Office Product</span>
+            <img src="Leather Desk Organizer.jpg" alt="Leather Desk Organizer">
+            <div class="card-body-c">
+              <h5>Leather Desk Organizer</h5>
+              <p>A classy desk addition with clock, card holder, and twin metallic pens.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-leather-desk-organizer.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="AllTravelJournal.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="AllOfficePrLeatherDeskOrganizer.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Padfolio -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-warning text-dark category-badge">Office Product</span>
+            <img src="Executive Padfolio.jpg" alt="Executive Padfolio">
+            <div class="card-body-c">
+              <h5>Executive Padfolio</h5>
+              <p>Zip-around padfolio for documents, business cards, and a writing pad.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+                <a href="Description-executive-padfolio.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="AllExecutivePadfolio.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+               <a href="AllExecutivePadfolio.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premium Pen Stand -->
+        <div class="slider-item">
+          <div class="product-card position-relative">
+            <span class="badge bg-warning text-dark category-badge">Office Product</span>
+            <img src="Premium Pen Stand.jpg" alt="Premium Pen Stand">
+            <div class="card-body-c">
+              <h5>Premium Pen Stand</h5>
+              <p>Elegant pen stand crafted to organize and elevate any executive desk.</p>
+            </div>
+            <div class="card-footer-c">
+              <div class="card-actions">
+               <a href="Description-premium-pen-stand.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+                <a href="AllPremiumPenStand.docx" download class="btn-feat">
+                  <i class="fa-solid fa-file-word me-1"></i>Details
+                </a>
+                <a href="AllPremiumPenStand.html" class="btn-moreprod">
+                  <i class="fa-solid fa-layer-group me-1"></i>More Products
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /slider-track -->
+    </div><!-- /slider-container -->
+  </div>
+</section>
+
+<!-- =============================
+     ABOUT STRIP
+============================= -->
+<section id="about" class="about-strip">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-md-5">
+        <span class="sec-label">Who We Are</span>
+        <h2 class="sec-head">Welcome to Ryana Calendars</h2>
+      </div>
+      <div class="col-md-7">
+        <p>"We are now fully available online! While we once connected with you through television and pamphlets, the internet now brings our entire collection right to your doorstep. Browse our range, download product details, and place your orders with absolute ease. Premium quality, elegant design — crafted for elegant living."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================
+     PRODUCTS GRID
+============================= -->
+<section id="products">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="sec-label">Our Collection</span>
+      <h2 class="sec-head">Curated for You</h2>
+      <p class="sec-sub">Discover our most loved pieces.</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="d-flex justify-content-center gap-2 mb-5 flex-wrap">
+      <button class="filter-btn active" id="btn-all"             onclick="filterProducts('all')">All</button>
+      <button class="filter-btn"        id="btn-calendars"       onclick="filterProducts('calendars')">Calendars</button>
+      <button class="filter-btn"        id="btn-diaries"         onclick="filterProducts('diaries')">Diaries</button>
+      <button class="filter-btn"        id="btn-journals"        onclick="filterProducts('journals')">Journals</button>
+      <button class="filter-btn"        id="btn-office-products" onclick="filterProducts('office-products')">Office Products</button>
+    </div>
+
+    <div class="row g-4" id="product-grid">
+
+      <!-- Wall Calendar -->
+      <div class="col-sm-6 col-lg-4 product-item calendars">
+        <div class="product-card position-relative">
+          <span class="badge bg-primary category-badge">Calendar</span>
+          <img src="wall calender.png" alt="Wall Calendar">
+          <div class="card-body-c">
+            <h5>Wall Calendar</h5>
+            <p>High-quality 12-month corporate wall calendar with glossy finish pages.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+              <a href="Description-wall-calendars.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="wallCalendersAll.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="wallCalendersAll.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desk Calendar -->
+      <div class="col-sm-6 col-lg-4 product-item calendars">
+        <div class="product-card position-relative">
+          <span class="badge bg-primary category-badge">Calendar</span>
+          <img src="Modern Desk Calendar Mockup Design Free Download - muhammad ahsan.jfif" alt="Desk Calendar">
+          <div class="card-body-c">
+            <h5>Desk Calendar</h5>
+            <p>Compact triangular stand desk calendar, perfect for office tables.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+              <a href="Description-desk-calendar.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="DeskAllCalenders.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="DeskAllCalenders.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pocket Calendar -->
+      <div class="col-sm-6 col-lg-4 product-item calendars">
+        <div class="product-card position-relative">
+          <span class="badge bg-primary category-badge">Calendar</span>
+          <img src="pocket calender.jfif" alt="Pocket Calendar">
+          <div class="card-body-c">
+            <h5>Pocket Calendar</h5>
+            <p>Slim and handy pocket calendar to keep your schedule close at all times.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+              <a href="Description-pocket-calendar.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="AllPocketCalendar.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="AllPocketCalendar.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Diary -->
+      <div class="col-sm-6 col-lg-4 product-item diaries">
+        <div class="product-card position-relative">
+          <span class="badge bg-success category-badge">Diary</span>
+          <img src="executivediary.png" alt="Executive Diary">
+          <div class="card-body-c">
+            <h5>Executive Diary</h5>
+            <p>Premium leatherette casing with page-a-day layout and ribbon bookmark.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+              <a href="Description-executive-diary.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="ExecutiveAllDiary.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="ExecutiveAllDiary.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student Diary -->
+      <div class="col-sm-6 col-lg-4 product-item diaries">
+        <div class="product-card position-relative">
+          <span class="badge bg-success category-badge">Diary</span>
+          <img src="student diarie.jfif" alt="Student Diary">
+          <div class="card-body-c">
+            <h5>Student Diary</h5>
+            <p>Lightweight, colorful designs with planner grids for homework tracking.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+              <a href="Description-student-diary.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="StudentAllDiary.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="StudentAllDiary.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Diary -->
+      <div class="col-sm-6 col-lg-4 product-item diaries">
+        <div class="product-card position-relative">
+          <span class="badge bg-success category-badge">Diary</span>
+          <img src="business diary.jpg" alt="Business Diary">
+          <div class="card-body-c">
+            <h5>Business Diary</h5>
+            <p>A professional diary for planning meetings, managing schedules, and tasks.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+             <a href="Description-business-diary.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="AllBusinessDiary.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="AllBusinessDiary.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leather Journal -->
+      <div class="col-sm-6 col-lg-4 product-item journals">
+        <div class="product-card position-relative">
+          <span class="badge bg-warning text-dark category-badge">Journal</span>
+          <img src="leather journal.jfif" alt="Leather Journal">
+          <div class="card-body-c">
+            <h5>Leather Journal</h5>
+            <p>Handcrafted genuine leather notebook with rustic vintage unlined pages.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+              <a href="Description-leather-journal.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="AllLeatherJournal.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+             <a href="AllLeatherJournal.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel Journal -->
+      <div class="col-sm-6 col-lg-4 product-item journals">
+        <div class="product-card position-relative">
+          <span class="badge bg-warning text-dark category-badge">Journal</span>
+          <img src="travel jornal.jfif" alt="Travel Journal">
+          <div class="card-body-c">
+            <h5>Travel Journal</h5>
+            <p>Pocket-sized hardbound journal with expandable pocket for tickets.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+              <a href="Description-travel-journal.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="AllTravelJournal.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="AllTravelJournal.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Journal -->
+      <div class="col-sm-6 col-lg-4 product-item journals">
+        <div class="product-card position-relative">
+          <span class="badge bg-warning text-dark category-badge">Journal</span>
+          <img src="Personal Journal.jpg" alt="Personal Journal">
+          <div class="card-body-c">
+            <h5>Personal Journal</h5>
+            <p>Capture thoughts, memories, goals, and daily experiences beautifully.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+             <a href="Description-personal-journal.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="AllPersonalJournal.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="AllPersonalJournal.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leather Desk Organizer -->
+      <div class="col-sm-6 col-lg-4 product-item office-products">
+        <div class="product-card position-relative">
+          <span class="badge bg-warning text-dark category-badge">Office Product</span>
+          <img src="Leather Desk Organizer.jpg" alt="Leather Desk Organizer">
+          <div class="card-body-c">
+            <h5>Leather Desk Organizer</h5>
+            <p>A classy desk addition with a built-in clock, card holder, and metallic pens.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+             <a href="Description-leather-desk-organizer.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="AllOfficePrLeatherDeskOrganizer.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="AllOfficePrLeatherDeskOrganizer.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Padfolio -->
+      <div class="col-sm-6 col-lg-4 product-item office-products">
+        <div class="product-card position-relative">
+          <span class="badge bg-warning text-dark category-badge">Office Product</span>
+          <img src="Executive Padfolio.jpg" alt="Executive Padfolio">
+          <div class="card-body-c">
+            <h5>Executive Padfolio</h5>
+            <p>Professional zip-around padfolio for documents, cards, and writing pad.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+             <a href="Description-executive-diary.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="AllExecutivePadfolio.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+              <a href="AllExecutivePadfolio.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Pen Stand -->
+      <div class="col-sm-6 col-lg-4 product-item office-products">
+        <div class="product-card position-relative">
+          <span class="badge bg-warning text-dark category-badge">Office Product</span>
+          <img src="Premium Pen Stand.jpg" alt="Premium Pen Stand">
+          <div class="card-body-c">
+            <h5>Premium Pen Stand</h5>
+            <p>Elegant pen stand crafted to organize and elevate any executive desk.</p>
+          </div>
+          <div class="card-footer-c">
+            <div class="card-actions">
+              <a href="Description-premium-pen-stand.html" class="btn-moreprod">
+                <i class="fa-solid fa-circle-info me-1"></i>Description
+              </a>
+              <a href="AllPremiumPenStand.docx" download class="btn-feat">
+                <i class="fa-solid fa-file-word me-1"></i>Features
+              </a>
+               <a href="AllPremiumPenStand.html" class="btn-moreprod">
+                <i class="fa-solid fa-layer-group me-1"></i>More Products
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+  </div>
+</section>
+
+<!-- =============================
+     DOWNLOADS
+============================= -->
+<section id="downloads" class="downloads-sec py-5">
+  <div class="container text-center">
+    <span class="sec-label">Price List</span>
+    <h2 class="sec-head mb-2">Download Complete Price List</h2>
+    <p class="sec-sub mb-5">Hamari mukammal price list niche diye gaye formats mein download karein.</p>
+    <div class="row justify-content-center g-3">
+      <div class="col-6 col-md-3">
+        <a href="RyanaCalendars_Combined.pdf" download class="dl-btn dl-btn-pdf">
+          <i class="fa-solid fa-file-pdf fa-2x"></i>PDF Format
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="RyanaCalendars_Combined.xlsx" download class="dl-btn dl-btn-xlsx">
+          <i class="fa-solid fa-file-excel fa-2x"></i>Excel Format
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="RyanaCalendars_Combined.docx" download class="dl-btn dl-btn-docx">
+          <i class="fa-solid fa-file-word fa-2x"></i>Word Format
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================
+     TESTIMONIALS
+============================= -->
+<section>
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="sec-label">Testimonials</span>
+      <h2 class="sec-head">What Customers Say</h2>
+      <p class="sec-sub">Trusted by stationery lovers worldwide.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="rev-card">
+          <div class="stars mb-3">★★★★★</div>
+          <p class="rev-text">"Absolutely premium quality. The diary paper feels luxurious and the binding is impeccable."</p>
+          <h6 class="rev-name mt-4">— Sarah M.</h6>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="rev-card">
+          <div class="stars mb-3">★★★★★</div>
+          <p class="rev-text">"Ryana calendars made my workspace look elegant and organized. Will definitely reorder."</p>
+          <h6 class="rev-name mt-4">— Daniel K.</h6>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="rev-card">
+          <div class="stars mb-3">★★★★★</div>
+          <p class="rev-text">"Beautiful packaging and premium leather finishing. A perfect gift for professionals."</p>
+          <h6 class="rev-name mt-4">— Olivia R.</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================
+     CONTACT
+============================= -->
+<section id="contact" class="contact-sec">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="sec-label">Get in Touch</span>
+      <h2 class="sec-head">Contact Us</h2>
+    </div>
+    <div class="row g-4">
+
+      <div class="col-md-6">
+        <div class="contact-card">
+          <h4 class="mb-4" style="font-family:'Cormorant Garamond',serif; font-size:1.6rem;">Send a Message</h4>
+          <div class="mb-3">
+            <label class="form-label-c">Full Name</label>
+            <input type="text" id="contactName" class="form-control-c" placeholder="Enter your name">
+            <small class="error-message text-danger" style="display:none; font-size:.8rem; margin-top:5px;"></small>
+          </div>
+          <div class="mb-3">
+            <label class="form-label-c">Email Address</label>
+            <input type="email" id="contactEmail" class="form-control-c" placeholder="name@example.com">
+            <small class="error-message text-danger" style="display:none; font-size:.8rem; margin-top:5px;"></small>
+          </div>
+          <div class="mb-4">
+            <label class="form-label-c">Message</label>
+            <textarea id="contactMessage" class="form-control-c" rows="4" placeholder="Write your message here..."></textarea>
+            <small class="error-message text-danger" style="display:none; font-size:.8rem; margin-top:5px;"></small>
+          </div>
+          <button id="submitContactBtn" class="btn-gold w-100" style="display:block; text-align:center; cursor:pointer;">
+            Send Message
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="contact-card mb-4">
+          <h4 class="mb-4" style="font-family:'Cormorant Garamond',serif; font-size:1.6rem;">Office Location</h4>
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <strong>Address</strong><br>
+              <span style="color:var(--muted); font-size:.9rem;">Ryana Tower, D.H.A Phase 2, Karachi, Pakistan</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <strong>Phone</strong><br>
+              <span style="color:var(--muted); font-size:.9rem;">+92 317 112 7785</span>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <strong>Email</strong><br>
+              <a href="mailto:info@ryana.com" style="color:var(--accent); font-size:.9rem; text-decoration:none;">info@ryana.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="map-box">
+          <iframe
+            src="https://maps.google.com/maps?q=DHA+Phase+2+Karachi+Pakistan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            height="220" style="border:0;" allowfullscreen loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================
+     FOOTER
+============================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-5">
+
+      <div class="col-md-4">
+        <div>
+          <img class="img" src="Ryana_Logo-removebg-preview-removebg-preview.png" alt="logo" style="height:20vh; width:40vh;">
+          <a class="navbar-brand-custom" href="#">Ryana <span>Calendars</span></a>
+        </div>
+        <p class="footer-text">Premium calendars, journals and diaries crafted for elegant living and productive minds.</p>
+        <div class="d-flex gap-2 mt-4">
+          <a href="https://www.instagram.com" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com" target="_blank" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.pinterest.com" target="_blank" class="social-btn"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="https://www.linkedin.com" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <h5 class="footer-title">Shop</h5>
+        <ul class="footer-links">
+          <li><a href="calendar.html">Calendars</a></li>
+          <li><a href="diaries.html">Diaries</a></li>
+          <li><a href="journal.html">Journals</a></li>
+          <li><a href="officeProduct.html">Office Products</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-2">
+        <h5 class="footer-title">Company</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="contactusform.html">Contact</a></li>
+          <li><a href="gallery.html">Image Gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h5 class="footer-title">Newsletter</h5>
+        <p class="footer-text mb-3">Get updates on new arrivals and exclusive offers.</p>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="your@email.com">
+          <button class="newsletter-submit">Subscribe</button>
+        </div>
+        <p class="footer-text mt-3" style="font-size:.82rem;">
+          <i class="fa-solid fa-phone me-1" style="color:var(--accent)"></i> +92 317 112 7785 |
+          <a href="mailto:info@ryana.com" style="color:var(--accent); text-decoration:none;">info@ryana.com</a>
+        </p>
+      </div>
+
+    </div>
+
+    <hr class="footer-hr">
+
+    <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <p class="mb-0">© 2026 Ryana Calendars. All rights reserved.</p>
+      <p class="mb-0">Crafted with elegance ✨</p>
+    </div>
+  </div>
+</footer>
+
+<!-- =============================
+     DESCRIPTION MODAL
+============================= -->
+<div class="desc-overlay" id="descOverlay" onclick="closeDescOnBg(event)">
+  <div class="desc-modal">
+    <div class="desc-modal-img-wrap">
+      <img id="descModalImg" class="desc-modal-img" src="" alt="">
+      <button class="desc-modal-close" onclick="closeDesc()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="desc-modal-body">
+      <span class="desc-modal-badge" id="descModalBadge"></span>
+      <h3 class="desc-modal-title" id="descModalTitle"></h3>
+      <p class="desc-modal-text" id="descModalText"></p>
+      <ul class="desc-modal-features" id="descModalFeatures"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-c" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+
+
+// =============================
+// DARK / LIGHT THEME TOGGLE
+// =============================
+function toggleTheme() {
+  const html = document.documentElement;
+  const icons = document.querySelectorAll('.t-icon');
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  icons.forEach(i => i.textContent = isDark ? '🌙' : '☀️');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.querySelectorAll('.t-icon').forEach(i => {
+      i.textContent = saved === 'dark' ? '☀️' : '🌙';
+    });
+  }
+  updateNavCount();
+  updateSliderArrows();
+});
+
+// =============================
+// SLIDER
+// =============================
+let currentSliderIndex = 0;
+
+function moveSlider(direction) {
+  const track = document.getElementById('sliderTrack');
+  const items = document.querySelectorAll('.slider-item');
+  if (!items.length) return;
+
+  const itemWidth = items[0].getBoundingClientRect().width + 24;
+  let visibleItems = window.innerWidth <= 576 ? 1 : window.innerWidth <= 991 ? 2 : 3;
+  const maxIndex = items.length - visibleItems;
+
+  currentSliderIndex = Math.min(Math.max(currentSliderIndex + direction, 0), maxIndex);
+  track.style.transform = `translateX(-${currentSliderIndex * itemWidth}px)`;
+  updateSliderArrows();
+}
+
+function updateSliderArrows() {
+  const items = document.querySelectorAll('.slider-item');
+  if (!items.length) return;
+  let visibleItems = window.innerWidth <= 576 ? 1 : window.innerWidth <= 991 ? 2 : 3;
+  const maxIndex = items.length - visibleItems;
+
+  document.getElementById('slider-prev').classList.toggle('disabled', currentSliderIndex === 0);
+  document.getElementById('slider-next').classList.toggle('disabled', currentSliderIndex >= maxIndex);
+}
+
+window.addEventListener('resize', () => {
+  currentSliderIndex = 0;
+  document.getElementById('sliderTrack').style.transform = 'translateX(0px)';
+  updateSliderArrows();
+});
+
+// =============================
+// SMOOTH SCROLL
+// =============================
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// =============================
+// PRODUCT FILTER
+// =============================
+function filterProducts(cat) {
+  document.querySelectorAll('.product-item').forEach(item => {
+    item.style.display = (cat === 'all' || item.classList.contains(cat)) ? 'block' : 'none';
+  });
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + cat).classList.add('active');
+}
+
+// =============================
+// CART
+// =============================
+function getCart() {
+  try { return JSON.parse(localStorage.getItem('ryana_cart')) || []; }
+  catch { return []; }
+}
+function saveCart(cart) {
+  localStorage.setItem('ryana_cart', JSON.stringify(cart));
+  updateNavCount();
+}
+function updateNavCount() {
+  const total = getCart().reduce((s, i) => s + i.qty, 0);
+  const badge = document.getElementById('navCartCount');
+  if (badge) badge.textContent = total;
+}
+function addToCart(btn, name, price, cat) {
+  const cart = getCart();
+  const item = cart.find(p => p.name === name);
+  if (item) item.qty++;
+  else cart.push({ name, price, category: cat, qty: 1 });
+  saveCart(cart);
+  const origText = btn.innerHTML;
+  btn.innerHTML = '<i class="fa-solid fa-check me-1"></i>Added!';
+  btn.classList.add('added');
+  setTimeout(() => {
+    btn.innerHTML = origText;
+    btn.classList.remove('added');
+  }, 1600);
+  showToast('🛒 ' + name + ' cart mein add ho gaya!');
+}
+
+// =============================
+// TOAST
+// =============================
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// =============================
+// SEARCH OVERLAY
+// =============================
+const PRODUCTS = [
+  { name:'Wall Calendar',          cat:'Calendar',       filter:'calendars',       img:'wall calender.png' },
+  { name:'Pocket Calendar',        cat:'Calendar',       filter:'calendars',       img:'pocket calender.jfif' },
+  { name:'Desk Calendar',          cat:'Calendar',       filter:'calendars',       img:'Modern Desk Calendar Mockup Design Free Download - muhammad ahsan.jfif' },
+  { name:'Executive Diary',        cat:'Diary',          filter:'diaries',         img:'executivediary.png' },
+  { name:'Student Diary',          cat:'Diary',          filter:'diaries',         img:'student diarie.jfif' },
+  { name:'Business Diary',         cat:'Diary',          filter:'diaries',         img:'business diary.jpg' },
+  { name:'Leather Journal',        cat:'Journal',        filter:'journals',        img:'leather journal.jfif' },
+  { name:'Travel Journal',         cat:'Journal',        filter:'journals',        img:'travel jornal.jfif' },
+  { name:'Personal Journal',       cat:'Journal',        filter:'journals',        img:'Personal Journal.jpg' },
+  { name:'Leather Desk Organizer', cat:'Office Product', filter:'office-products', img:'Leather Desk Organizer.jpg' },
+  { name:'Executive Padfolio',     cat:'Office Product', filter:'office-products', img:'Executive Padfolio.jpg' },
+  { name:'Premium Pen Stand',      cat:'Office Product', filter:'office-products', img:'Premium Pen Stand.jpg' }
+];
+
+function toggleSearch() {
+  const ov = document.getElementById('searchOverlay');
+  if (ov.style.display === 'flex') { closeSearchAll(); return; }
+  ov.style.display = 'flex';
+  requestAnimationFrame(() => ov.style.opacity = '1');
+  setTimeout(() => document.getElementById('searchInput').focus(), 100);
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSearchAll() {
+  const ov = document.getElementById('searchOverlay');
+  ov.style.opacity = '0';
+  setTimeout(() => {
+    ov.style.display = 'none';
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('searchHint').style.display = 'block';
+    document.getElementById('searchEmpty').style.display = 'none';
+  }, 300);
+  document.body.style.overflow = '';
+}
+
+function closeSearch(e) {
+  if (e.target === document.getElementById('searchOverlay')) closeSearchAll();
+}
+
+function handleSearch(q) {
+  const res   = document.getElementById('searchResults');
+  const hint  = document.getElementById('searchHint');
+  const empty = document.getElementById('searchEmpty');
+  q = q.trim().toLowerCase();
+
+  if (!q) { res.style.display = 'none'; hint.style.display = 'block'; empty.style.display = 'none'; return; }
+
+  const matches = PRODUCTS.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
+  hint.style.display = 'none';
+
+  if (!matches.length) { res.style.display = 'none'; empty.style.display = 'block'; return; }
+
+  empty.style.display = 'none';
+  res.style.display = 'block';
+  res.innerHTML = matches.map(p => `
+    <div onclick="goToProduct('${p.filter}','${p.name}')" style="
+      display:flex; align-items:center; gap:14px; padding:10px 8px;
+      border-radius:12px; cursor:pointer; transition:.2s;
+    " onmouseover="this.style.background='var(--bg2)'"
+       onmouseout="this.style.background='transparent'">
+      <img src="${p.img}" alt="${p.name}" style="width:48px; height:48px; object-fit:cover; border-radius:10px; border:1px solid var(--border);">
+      <div>
+        <div style="font-weight:600; font-size:.92rem; color:var(--text);">${p.name}</div>
+        <div style="font-size:.8rem; color:var(--muted);">${p.cat}</div>
+      </div>
+    </div>`).join('');
+}
+
+function handleSearchKey(e) {
+  if (e.key === 'Enter') {
+    const q = e.target.value.trim().toLowerCase();
+    const match = PRODUCTS.find(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
+    if (match) goToProduct(match.filter, match.name);
+  }
+  if (e.key === 'Escape') closeSearchAll();
+}
+
+function goToProduct(filter, name) {
+  closeSearchAll();
+  filterProducts(filter);
+  setTimeout(() => {
+    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+  }, 350);
+  showToast('🔍 ' + name + ' — ' + filter + ' section mein dekhen!');
+}
+
+// =============================
+// CONTACT FORM VALIDATION
+// =============================
+document.getElementById('submitContactBtn').addEventListener('click', function () {
+  const nameInput    = document.getElementById('contactName');
+  const emailInput   = document.getElementById('contactEmail');
+  const messageInput = document.getElementById('contactMessage');
+  const emailRegex   = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const fields = [
+    { el: nameInput,    valid: nameInput.value.trim() !== '',             msg: 'Please enter your name.' },
+    { el: emailInput,   valid: emailRegex.test(emailInput.value.trim()),  msg: emailInput.value.trim() === '' ? 'Email cannot be blank!' : 'Enter a valid email (e.g. user@example.com).' },
+    { el: messageInput, valid: messageInput.value.trim() !== '',          msg: 'Please write your message.' }
+  ];
+
+  let isValid = true;
+
+  fields.forEach(field => {
+    const err = field.el.parentElement.querySelector('.error-message');
+    if (!field.valid) {
+      err.textContent = field.msg;
+      err.style.display = 'block';
+      field.el.style.borderColor = '#dc3545';
+      isValid = false;
+    } else {
+      err.style.display = 'none';
+      field.el.style.borderColor = 'var(--border)';
+    }
+  });
+
+  if (isValid) {
+    this.textContent = 'Sent! ✓';
+    this.style.background = '#2d7a50';
+    this.disabled = true;
+    showToast('✉️ Your message has been sent successfully!');
+    setTimeout(() => {
+      nameInput.value = ''; emailInput.value = ''; messageInput.value = '';
+      this.textContent = 'Send Message';
+      this.style.background = 'var(--accent)';
+      this.disabled = false;
+    }, 3000);
+  } else {
+    showToast('⚠️ Please correct the mistakes in the form.');
+  }
+});
+
+</script>
+</body>
+</html>

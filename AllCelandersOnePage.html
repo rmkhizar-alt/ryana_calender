@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wall Calendars Collection | Ryana Calendars</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    .navbar-toggler{
+      border:none !important;
+      box-shadow:none !important;
+    }
+
+    .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833,37,41,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    [data-theme="dark"] .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    :root{
+      --bg:#f5f1ee;
+      --bg2:#ebe5e1;
+      --text:#1f1f1f;
+      --card:#ffffff;
+      --nav:rgba(255,255,255,.9);
+      --border:#ddd;
+      --shadow:rgba(0,0,0,.08);
+      --accent:#d4a043;
+
+      --primary-color:#b5832a;
+      --accent-color:#b5832a;
+      --dark-color:#212529;
+    }
+
+    /* DARK MODE */
+    [data-theme="dark"]{
+      --bg:#111827;
+      --bg2:#1f2937;
+      --text:#f3f4f6;
+      --card:#1e293b;
+      --nav:rgba(17,24,39,.92);
+      --border:#374151;
+      --shadow:rgba(0,0,0,.4);
+      --accent:#d4a043;
+    }
+
+    /* BODY */
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      transition:.3s;
+    }
+
+    /* ============================
+       NAVBAR
+    ============================ */
+    .navbar-custom {
+      background: var(--nav) !important;
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: .35s;
+      padding: 10px 0;
+    }
+    .navbar-brand-custom {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text) !important;
+      text-decoration: none;
+      letter-spacing: .5px;
+      margin-left: 50px;
+    }
+    .navbar-brand-custom span { color: var(--accent); }
+
+    .nav-link-c {
+      color: var(--text) !important;
+      font-size: .88rem;
+      font-weight: 500;
+      padding: 8px 14px !important;
+      border-radius: 8px;
+      transition: .25s;
+      letter-spacing: .3px;
+    }
+    .nav-link-c:hover { background: var(--bg2); }
+
+    .dropdown-menu {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 8px;
+      box-shadow: 0 16px 40px var(--shadow);
+    }
+    .dropdown-item {
+      color: var(--text);
+      border-radius: 8px;
+      font-size: .87rem;
+      padding: 8px 14px;
+      transition: .2s;
+    }
+    .dropdown-item:hover { background: var(--bg2); color: var(--text); }
+    .dropdown-divider { border-color: var(--border); margin: 6px 0; }
+
+    .theme-btn {
+      width: 40px; height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      transition: .3s;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .theme-btn:hover { border-color: var(--accent); }
+
+    .cart-link {
+      position: relative;
+      color: var(--text) !important;
+      font-size: 1.1rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: .25s;
+      text-decoration: none;
+    }
+    .cart-link:hover { background: var(--bg2); }
+
+    #navCartCount {
+      font-size: .6rem;
+      min-width: 18px; height: 18px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      position: absolute; top: 2px; right: 2px;
+      font-weight: 700;
+    }
+
+    [data-theme="dark"] .navbar-toggler { filter: invert(1); }
+
+    /* ============================
+       CARDS & GRID STYLES
+    ============================ */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 12px auto 20px;
+      border-radius: 2px;
+    }
+
+    .product-card{
+      transition:transform .3s ease,box-shadow .3s ease;
+      height:100%;
+      border:none;
+      border-radius:16px;
+      overflow:hidden;
+      background:var(--card);
+      color:var(--text);
+      box-shadow:0 4px 15px rgba(0,0,0,.08);
+    }
+
+    .product-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 40px rgba(180,83,9,.2);
+    }
+
+    .product-card img{
+      height:220px;
+      object-fit:cover;
+      width:100%;
+    }
+
+    .card-body p,
+    .text-muted{
+      color:var(--text)!important;
+      opacity:.75;
+    }
+
+    .price-tag{
+      font-size:1.3rem;
+      font-weight:800;
+      color:var(--accent);
+    }
+
+    /* Chota aur behtareen Custom Button Fixed for Add to Cart */
+    .btn-add-cart {
+      font-size: .85rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg,#b5832a,#d4a043);
+      color: #fff !important;
+      font-weight: 600;
+      text-decoration: none !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: .25s;
+      box-shadow: 0 4px 12px rgba(217,119,6,.2);
+      cursor: pointer;
+    }
+
+    .btn-add-cart:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(217,119,6,.35);
+    }
+
+
+
+    /* Chota aur behtareen Custom Button Fixed */
+    .btn-details {
+      font-size: .85rem;
+      padding: 8px 18px;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg,#b5832a,#d4a043);
+      color: #fff !important;
+      font-weight: 600;
+      text-decoration: none !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: .25s;
+      box-shadow: 0 4px 12px rgba(217,119,6,.2);
+    }
+
+    .btn-details:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(217,119,6,.35);
+    }
+
+    /* ============================
+       DOWNLOADS
+    ============================ */
+    .downloads-sec {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .dl-btn {
+      border-radius: 16px;
+      padding: 28px 10px;
+      font-weight: 700;
+      font-size: .95rem;
+      width: 100%;
+      border: none !important;
+      text-decoration: none !important;
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #ffffff !important;
+      transition: .3s;
+    }
+    .dl-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 28px var(--shadow); color: #fff !important; }
+    .dl-btn-pdf  { background: #dc3545 !important; }
+    .dl-btn-xlsx { background: #198754 !important; }
+    .dl-btn-docx { background: #0d6efd !important; }
+
+    [data-theme="dark"] footer{
+      background:#0f172a!important;
+    }
+    /* image */
+
+.img{
+  display: flex;
+  justify-content: left;
+  text-shadow: #dddddd  ;
+}
+
+/* Img dark mode */
+[data-theme="dark"] .img{
+  filter: brightness(0) invert(1);
+}
+  </style>
+</head>
+
+<body>
+
+<!-- ============================
+     NAVBAR
+============================ -->
+<nav class="navbar navbar-expand-lg navbar-custom shadow-sm sticky-top">
+  <div class="container">
+    <div>
+      <img class="img" src="Ryana_Logo-removebg-preview-removebg-preview.png" alt="logo" style="height:10vh; width:40vh;">
+      <a class="navbar-brand-custom" href="#">Ryana <span>Calendars</span></a>
+    </div>
+
+    <button class="navbar-toggler border-0 shadow-none" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item me-1">
+        
+        </li>
+        <li class="nav-item"><a class="nav-link nav-link-c active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="gallery.html">Image Gallery</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-c dropdown-toggle" href="#" data-bs-toggle="dropdown">Products</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="index.html#products">All Products</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="calendar.html">Calendars</a></li>
+            <li><a class="dropdown-item" href="diaries.html">Diaries</a></li>
+            <li><a class="dropdown-item" href="journal.html">Journals</a></li>
+            <li><a class="dropdown-item" href="officeProduct.html">Office Products</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="#downloads">Price List</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-c" href="contactusform.html">Contact</a></li>
+        <!-- Cart -->
+        <li class="nav-item">
+          <a class="cart-link" href="cart.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="navCartCount">0</span>
+          </a>
+        </li>
+        <!-- Dark Mode -->
+        <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+          <button class="theme-btn" onclick="toggleTheme()">
+            <span class="t-icon">🌙</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- PRODUCTS GRID SECTION -->
+<section id="products" class="py-5">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h2 class="section-title">Our Wall Calendars Collection</h2>
+      <div class="divider"></div>
+
+    </div>
+
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="wall calenders 1.jpg" alt="Landscape & Nature">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Landscape & Nature</h5>
+            <p class="text-muted small mb-4">Beautiful natural landscapes and seasonal scenery bring freshness, inspiration, and relaxation throughout every month.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 1500</span>
+              <a href="wallCalendersAll.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-001', 'Landscape & Nature', 1500, 'product-1.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="wall calenders 2.jpg" alt="Motivational Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Motivational & Quotes</h5>
+            <p class="text-muted small mb-4">Inspirational quotes encourage positivity, confidence, productivity, and personal growth every single day.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 1800</span>
+              <a href="wallCalendersAll.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-002', 'Motivational & Quotes', 1800, 'product-2.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="wall calendar 3.jpg" alt="Minimalist Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Minimalist & Modern</h5>
+            <p class="text-muted small mb-4">Clean layouts and modern aesthetics provide elegant organization with distraction-free monthly planning.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 1300</span>
+              <a href="wallCalendersAll.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-003', 'Minimalist & Modern', 1300, 'product-3.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="wall calenders 5.jpg" alt="Arts Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Arts & Illustrations</h5>
+            <p class="text-muted small mb-4">Creative illustrations and colorful artwork transform walls into inspiring displays throughout the year.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 1000</span>
+              <a href="wallCalendersAll.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-004', 'Arts & Illustrations', 1000, 'product-4.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="wall calenders 4.jpg" alt="Family Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Family & Planner</h5>
+            <p class="text-muted small mb-4">Large planning spaces help families organize appointments, activities, tasks, and important events.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 2000</span>
+              <a href="wallCalendersAll.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-005', 'Family & Planner', 2000, 'product-5.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="text-center mb-5">
+      <h2 class="section-title">Our Desk Calendars Collection</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="Desk Calenders 1.jpg" alt="Executive Desk Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Executive Desk Calendar</h5>
+            <p class="text-muted small mb-4">A sophisticated desk calendar designed for executives, featuring premium leather finish and professional corporate appearance.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 1200</span>
+              <a href="DeskAllCalenders.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-006', 'Executive Desk Calendar', 1200, 'product-6.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="desk calenders 2.jpg" alt="Academic Desk Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Academic Desk Calendar</h5>
+            <p class="text-muted small mb-4">Perfect for students and teachers, helping organize academic schedules, exams, assignments, and study planning efficiently.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 1400</span>
+              <a href="DeskAllCalenders.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-007', 'Academic Desk Calendar', 1400, 'product-7.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="desk Calenders 3.jpg" alt="Mini Desk Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Mini Desk Calendar</h5>
+            <p class="text-muted small mb-4">Compact and lightweight calendar ideal for small desks, providing quick date reference without occupying space.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 1000</span>
+              <a href="DeskAllCalenders.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-008', 'Mini Desk Calendar', 1000, 'product-8.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="desk Calenders 4.jpg" alt="Corporate Desk Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Corporate Desk Calendar</h5>
+            <p class="text-muted small mb-4">Used by companies for branding, promotions, and gifting, featuring logos and professional business-oriented designs.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 3500</span>
+              <a href="DeskAllCalenders.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-009', 'Corporate Desk Calendar', 3500, 'product-9.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="desk Calenders 5.jpg" alt="Wooden Base Desk Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Wooden Base Desk Calendar</h5>
+            <p class="text-muted small mb-4">Elegant wooden base design adds a natural aesthetic touch, combining durability with stylish desk decoration.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 2500</span>
+              <a href="DeskAllCalenders.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button onclick="addToCart('prod-010', 'Wooden Base Desk Calendar', 2500, 'product-10.jpg')" class="btn-add-cart">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+   <div class="text-center mb-5">
+      <h2 class="section-title">Pocket Calendar Collection</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Card 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="pocket calenders 1.jpg" alt="Minimalist Pocket Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Minimalist Pocket Calendar</h5>
+            <p class="text-muted small mb-4">Clean design, simple scheduling, lightweight format, perfect daily organization.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 800</span>
+              <a href="AllPocketCalendar.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button class="btn-details" onclick="addToCart('pocket1', 'Minimalist Pocket Calendar', 800, this)">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="pocket calendrs 2.jpg" alt="Leather-Bound Planner">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Leather-Bound Planner</h5>
+            <p class="text-muted small mb-4">Premium leather cover, executive style, durable companion for professionals.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 2000</span>
+              <a href="AllPocketCalendar.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button class="btn-details" onclick="addToCart('pocket2', 'Leather-Bound Planner', 2000, this)">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="pocket calenders 3.jpg" alt="Magnetic Pocket Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Magnetic Pocket Calendar</h5>
+            <p class="text-muted small mb-4">Magnetic backing attaches easily, offering convenient date tracking anywhere.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 2100</span>
+              <a href="AllPocketCalendar.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button class="btn-details" onclick="addToCart('pocket3', 'Magnetic Pocket Calendar', 2100, this)">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="pocket calenders 4.jpg" alt="Custom Photo Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Custom Photo Calendar</h5>
+            <p class="text-muted small mb-4">Personalized photos create memorable calendars ideal for gifts and branding.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 1500</span>
+              <a href="AllPocketCalendar.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button class="btn-details" onclick="addToCart('pocket4', 'Custom Photo Calendar', 1500, this)">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="pocket calenders 5.jpg" alt="Accordion Fold Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Accordion Fold Calendar</h5>
+            <p class="text-muted small mb-4">Unique folding format displays yearly schedules clearly and beautifully.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 700</span>
+              <a href="AllPocketCalendar.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button class="btn-details" onclick="addToCart('pocket5', 'Accordion Fold Calendar', 700, this)">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="pocket calenders 6.jpg" alt="Vintage Kraft Calendar">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Vintage Kraft Calendar</h5>
+            <p class="text-muted small mb-4">Rustic kraft paper appearance delivers eco-friendly charm and durability.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 2200</span>
+              <a href="AllPocketCalendar.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button class="btn-details" onclick="addToCart('pocket6', 'Vintage Kraft Calendar', 2200, this)">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="pocket calenders 7.jpg" alt="Hardcover Pocket Diary">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Hardcover Pocket Diary</h5>
+            <p class="text-muted small mb-4">Strong hardcover protection keeps important schedules secure every day.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 1000</span>
+              <a href="AllPocketCalendar.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button class="btn-details" onclick="addToCart('pocket7', 'Hardcover Pocket Diary', 1000, this)">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="pocket calenders 8.jpg" alt="Spiral-Bound Planner">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Spiral-Bound Planner</h5>
+            <p class="text-muted small mb-4">Smooth page turning, flexible binding, practical planning for users.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 900</span>
+              <a href="AllPocketCalendar.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button class="btn-details" onclick="addToCart('pocket8', 'Spiral-Bound Planner', 900, this)">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="card product-card">
+          <img src="pocket calenders 9.jpg" alt="Multi-Utility Pocket Tracker">
+          <div class="card-body d-flex flex-column p-4">
+            <h5 class="fw-bold mb-2">Multi-Utility Pocket Tracker</h5>
+            <p class="text-muted small mb-4">Tracks habits, notes, schedules, and goals within one organizer.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="price-tag">Rs. 3000</span>
+              <a href="AllPocketCalendar.docx" download class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center"><i class="fa-solid fa-file-word me-1"></i>Details</a>
+              <button class="btn-details" onclick="addToCart('pocket9', 'Multi-Utility Pocket Tracker', 3000, this)">
+                <i class="fa-solid fa-cart-plus me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     DOWNLOADS
+============================ -->
+<section id="downloads" class="downloads-sec py-5">
+  <div class="container text-center">
+    <span class="sec-label" style="color:var(--accent); font-weight:700;">Price List</span>
+    <h2 class="mb-2 fw-bold">Download Complete Price List</h2>
+    <div class="row justify-content-center g-3">
+      <div class="col-6 col-md-3">
+        <a href="AllCelandersOnePage.pdf" download class="dl-btn dl-btn-pdf">
+          <i class="fa-solid fa-file-pdf fa-2x"></i>PDF Format
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="AllCelandersOnePage.xlsx" download class="dl-btn dl-btn-xlsx">
+          <i class="fa-solid fa-file-excel fa-2x"></i>Excel Format
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="AllCelandersOnePage.docx" download class="dl-btn dl-btn-docx">
+          <i class="fa-solid fa-file-word fa-2x"></i>Word Format
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-4">
+  <div class="container">
+    <div class="mb-3">
+      <a href="https://www.facebook.com/" target="_blank" class="text-white me-3"><i class="fa-brands fa-facebook fa-lg"></i></a>
+      <a href="https://www.instagram.com/" target="_blank" class="text-white me-3"><i class="fa-brands fa-instagram fa-lg"></i></a>
+      <a href="https://www.linkedin.com/" target="_blank" class="text-white me-3"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+    </div>
+    <p class="mb-0">&copy; 2026 Ryana Calendars. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<script>
+/* ============================
+   DARK MODE TOGGLE
+============================ */
+function toggleTheme() {
+  const html = document.documentElement;
+  const icons = document.querySelectorAll('.t-icon');
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  icons.forEach(i => i.textContent = isDark ? '🌙' : '☀️');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.querySelectorAll('.t-icon').forEach(i => {
+      i.textContent = saved === 'dark' ? '☀️' : '🌙';
+    });
+  }
+  updateNavCount();
+});
+
+/* ============================
+   SMOOTH SCROLL
+============================ */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) { 
+      e.preventDefault(); 
+      target.scrollIntoView({ behavior: 'smooth' }); 
+    }
+  });
+});
+
+
+
+</script>
+
+
+<script>
+
+function getCart() {
+  try { return JSON.parse(localStorage.getItem('ryana_cart')) || []; }
+  catch { return []; }
+}
+function updateNavCount() {
+  const total = getCart().reduce((s, i) => s + i.qty, 0);
+  const badge = document.getElementById('navCartCount');
+  if (badge) badge.textContent = total;
+}
+function addToCart(id, name, price, img) {
+  let cart = getCart();
+  let item = cart.find(i => i.id === id);
+  if (item) {
+    item.qty += 1;
+  } else {
+    cart.push({ id: id, name: name, price: price, img: img || '', qty: 1 });
+  }
+  localStorage.setItem('ryana_cart', JSON.stringify(cart));
+  updateNavCount();
+  showCartToast(name);
+}
+function showCartToast(name) {
+  let t = document.getElementById('cartToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'cartToast';
+    t.style.cssText = 'position:fixed;bottom:28px;right:28px;background:linear-gradient(135deg,#b5832a,#d4a043);color:#fff;padding:13px 20px;border-radius:12px;font-weight:600;font-size:.88rem;box-shadow:0 6px 20px rgba(181,131,42,.4);z-index:9999;opacity:0;transition:opacity .35s;pointer-events:none;';
+    document.body.appendChild(t);
+  }
+  t.innerHTML = '<i class="fa-solid fa-circle-check" style="margin-right:8px;"></i>' + name + ' added to cart!';
+  t.style.opacity = '1';
+  clearTimeout(t._t);
+  t._t = setTimeout(() => { t.style.opacity = '0'; }, 2600);
+}
+</script>
+</body>
+</html>
